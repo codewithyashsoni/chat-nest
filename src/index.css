@@ -1,0 +1,254 @@
+:root {
+  /* ---------- Backgrounds ---------- */
+  --bg: #f5f7fb;
+  --bg-secondary: #eef3f9;
+  --surface: #ffffff;
+  --surface-hover: #f8fafc;
+  --surface-muted: #f1f5f9;
+
+  /* ---------- Primary ---------- */
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-active: #1d4ed8;
+  --primary-light: #eff6ff;
+  --primary-muted: #dbeafe;
+
+  /* ---------- Text ---------- */
+  --text: #172033;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --text-placeholder: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* ---------- Borders ---------- */
+  --border: #e2e8f0;
+  --border-light: #edf2f7;
+  --border-focus: #3b82f6;
+
+  /* ---------- Gradients ---------- */
+  --gradient-primary: linear-gradient(
+    135deg,
+    #3b82f6 0%,
+    #6366f1 100%
+  );
+  -gradient-primary-hover: linear-gradient(
+    135deg,
+    #2563eb 0%,
+    #4f46e5 100%
+  );
+  --gradient-brand: linear-gradient(
+    135deg,
+    #2563eb 0%,
+    #6366f1 100%
+  );
+  --gradient-auth-bg: linear-gradient(
+    135deg,
+    #f5f7fb 0%,
+    #eef4ff 50%,
+    #f7f8fc 100%
+  );
+
+  /* ---------- Buttons ---------- */
+
+  /* Primary button */
+  --btn-primary-bg: #3b82f6;
+  --btn-primary-hover: #2563eb;
+  --btn-primary-active: #1d4ed8;
+  --btn-primary-text: #ffffff;
+
+  /* Secondary button */
+  --btn-secondary-bg: #eaf2ff;
+  --btn-secondary-hover: #dbeafe;
+  --btn-secondary-active: #bfdbfe;
+  --btn-secondary-text: #2563eb;
+
+  /* Outline button */
+  --btn-outline-bg: transparent;
+  --btn-outline-hover: #f1f5f9;
+  --btn-outline-active: #e2e8f0;
+  --btn-outline-border: #cbd5e1;
+  --btn-outline-text: #334155;
+
+  /* ---------- Inputs ---------- */
+  --input-bg: #ffffff;
+  --input-bg-hover: #fcfdff;
+  --input-border: #dbe3ec;
+  --input-border-hover: #cbd5e1;
+  --input-border-focus: #3b82f6;
+  --input-text: #172033;
+  --input-placeholder: #94a3b8;
+  --input-focus-ring: rgba(59, 130, 246, 0.15);
+
+  /* ---------- Chat Messages ---------- */
+
+  /* Own message */
+  --message-own-bg: #3b82f6;
+  --message-own-hover: #3478e5;
+  --message-own-text: #ffffff;
+  --message-own-meta: rgba(255, 255, 255, 0.75);
+
+  /* Other user's message */
+  --message-other-bg: #e8eef7;
+  --message-other-hover: #e1e8f2;
+  --message-other-text: #172033;
+  --message-other-meta: #64748b;
+
+  /* ---------- Chat Area ---------- */
+  --chat-bg: #f5f7fb;
+  --chat-input-bg: #ffffff;
+  --chat-header-bg: #ffffff;
+  --chat-divider: #e2e8f0;
+
+  /* ---------- Status ---------- */
+  --online: #22c55e;
+  --online-light: #dcfce7;
+
+  --offline: #94a3b8;
+  --offline-light: #f1f5f9;
+
+  --typing: #3b82f6;
+
+  /* ---------- Feedback ---------- */
+  --success: #16a34a;
+  --success-bg: #f0fdf4;
+
+  --error: #dc2626;
+  --error-bg: #fef2f2;
+
+  --warning: #d97706;
+  --warning-bg: #fffbeb;
+
+  --info: #2563eb;
+  --info-bg: #eff6ff;
+
+  /* ---------- Avatar ---------- */
+  --avatar-bg: #dbeafe;
+  --avatar-text: #2563eb;
+
+  /* ---------- Shadows ---------- */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+
+  --shadow-sm:
+    0 1px 3px rgba(15, 23, 42, 0.06),
+    0 1px 2px rgba(15, 23, 42, 0.04);
+
+  --shadow-md:
+    0 4px 12px rgba(15, 23, 42, 0.08),
+    0 2px 4px rgba(15, 23, 42, 0.04);
+
+  --shadow-lg:
+    0 10px 25px rgba(15, 23, 42, 0.10),
+    0 4px 10px rgba(15, 23, 42, 0.05);
+
+  /* ---------- Border Radius ---------- */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.125rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* ---------- Spacing ---------- */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+
+  /* ---------- Typography ---------- */
+  --font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-md: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ---------- Line Height ---------- */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* ---------- Transitions ---------- */
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  /* ---------- Z-Index ---------- */
+  --z-header: 100;
+  --z-dropdown: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  line-height: var(--line-height-normal);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+button,
+input,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+::selection {
+  background: var(--primary-muted);
+  color: var(--text);
+}
