@@ -305,7 +305,6 @@ a {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
 }
-
 .auth-input-group{
   width: 100%;
 }

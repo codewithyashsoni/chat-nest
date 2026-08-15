@@ -15,6 +15,12 @@ function getAuthErrorMessage(error){
         case "auth/too-many-requests":
             return "Too many attempts. Please try again later.";
 
+        case "auth/invalid-credential":
+            return "Incorrent email or password.";
+
+        case "auth/user-disabled":
+            return "This account has been disabled.";
+
         default:
             return "Something went wrong. Please try again.";
     }
