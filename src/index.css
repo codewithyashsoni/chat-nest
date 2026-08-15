@@ -31,7 +31,7 @@
     #3b82f6 0%,
     #6366f1 100%
   );
-  -gradient-primary-hover: linear-gradient(
+  --gradient-primary-hover: linear-gradient(
     135deg,
     #2563eb 0%,
     #4f46e5 100%
@@ -77,7 +77,7 @@
   --input-border-focus: #3b82f6;
   --input-text: #172033;
   --input-placeholder: #94a3b8;
-  --input-focus-ring: rgba(59, 130, 246, 0.15);
+  --input-focus-ring: 0 0 3px 3px rgba(59, 130, 246, 0.15);
 
   /* ---------- Chat Messages ---------- */
 
@@ -226,9 +226,11 @@ textarea {
 button {
   cursor: pointer;
 }
-
 button:disabled {
   cursor: not-allowed;
+}
+input{
+  outline: none;
 }
 a {
   color: inherit;
@@ -251,4 +253,168 @@ a {
 ::selection {
   background: var(--primary-muted);
   color: var(--text);
+}
+
+
+.auth-page{
+  min-height: 100vh;
+  background: var(--gradient-auth-bg);
+  display :flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth-container{
+  width: min(90%, 600px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.auth-brand{
+  text-align: center;
+  margin-bottom: var(--space-3);
+}
+.auth-logo{
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  justify-content: center;
+}
+.auth-logo-icon{
+  height: 2.5rem;
+  width: 2.5rem;
+  color: var(--primary);
+}
+.auth-logo-text{
+  font-size: 2.5rem;
+  background: var(--gradient-brand);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.auth-brand p{
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+.auth-card{
+  width :100%;
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.auth-input-group{
+  width: 100%;
+}
+.auth-input-group label{
+  display: block;
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--space-1);
+}
+.auth-input{
+  padding: .5rem 1rem;
+  width: 100%;
+  background: var(--input-bg);
+  font-size: var(--font-size-md);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  color: var(--input-text);
+  margin-bottom: var(--space-2);
+  transition: var(--transition-normal);
+}
+.auth-input::placeholder{
+  color: var(--input-placeholder);
+}
+.auth-input:hover{
+  background: var(--input-bg-hover);
+  border-color: var(--input-border-hover);
+}
+.auth-input:focus{
+  border-color: var(--input-border-focus);
+  box-shadow: var(--input-focus-ring);
+}
+.auth-button{
+  width: 100%;
+  padding: .5rem 1.5rem;
+  margin: var(--space-3) 0;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  background: var(--gradient-primary);
+  color: var(--btn-primary-text);
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: var(--transition-normal);
+}
+.auth-button:disabled{
+  opacity: .65;
+}
+.auth-button:not(:disabled):hover{
+  background: var(--gradient-primary-hover);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+}
+.auth-button:not(:disabled):active{
+  transform: scale(.95);
+}
+.auth-loader{
+  width :1.5rem;
+  height: 1.5rem;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg)
+  }
+}
+.auth-form-header{
+  text-align: center;
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border);
+}
+.auth-form-header h2{
+  font-size: var(--font-size-3xl);
+  color: var(--text);
+}
+.auth-form-header p{
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+}
+.auth-form{
+  padding-top: var(--space-2);
+}
+.auth-form-error{
+  width: fit-content;
+  padding: var(--space-2) var(--space-3);
+  background: var(--error-bg);
+  color: var(--error);
+  font-size: var(--font-size-sm);
+  border: 1px solid rgba(220, 38, 38, 0.15);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-2);
+}
+.auth-switch{
+  text-align: center;
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+.auth-switch-link{
+  color: var(--primary);
+  font-weight: var(--font-weight-bold);
+}
+.auth-switch-link:hover{
+  color: var(--primary-hover);
+  text-decoration: underline;
 }
