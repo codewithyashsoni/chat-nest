@@ -29,4 +29,4 @@ async function loginUser(email, password){
     return userCredentials.user;
 }
 
-export { signUpUser, loginUser }
+export { auth, signUpUser, loginUser }
