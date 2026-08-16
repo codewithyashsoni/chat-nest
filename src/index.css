@@ -94,10 +94,11 @@
   --message-other-meta: #64748b;
 
   /* ---------- Chat Area ---------- */
-  --chat-bg: #f5f7fb;
   --chat-input-bg: #ffffff;
   --chat-header-bg: #ffffff;
-  --chat-divider: #e2e8f0;
+  --chat-bg: #f7faff;
+  --chat-divider: #dbe5f0;
+  --chat-date-bg: #eaf2fb;
 
   /* ---------- Status ---------- */
   --online: #22c55e;
@@ -542,6 +543,7 @@ a {
   width: 100%;
   padding: var(--space-4) var(--space-6);
   overflow-y: auto;
+  background-color: var(--chat-bg);
 }
 .message-empty-state{
   width: 100%;
@@ -627,4 +629,25 @@ a {
 }
 .message-time-own{
   color: var(--message-own-meta);
+}
+.date-divider{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin: var(--space-5) 0;
+}
+.date-divider-line{
+  flex: 1;
+  height: 1px;
+  background: var(--chat-divider);
+}
+.date-divider-label{
+  flex-shrink: 0;
+  padding: var(--space-2) var(--space-4);
+  color: var(--text-secondary);
+  background: var(--chat-date-bg);
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
 }

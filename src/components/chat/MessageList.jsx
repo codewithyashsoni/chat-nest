@@ -1,5 +1,6 @@
 import MessageEmptyState from "./MessageEmptyState.jsx"
 import MessageBubble from "./MessageBubble.jsx"
+import DateDivider from "./DateDivider.jsx";
 
 function MessageList(){
     const messages = [
