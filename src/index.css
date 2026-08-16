@@ -651,3 +651,42 @@ a {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
 }
+.message-input-container{
+  width: min(90%, 1280px);
+  margin-inline: auto;
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--border);
+}
+.message-input-form{
+  display: flex;
+  gap: var(--space-6)
+}
+.message-input{
+  flex: 6;
+  background: var(--input-bg);
+  color: var(--input-text);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--font-size-lg);
+  transition: var(--transition-normal);
+}
+.message-input:hover{
+  border-color: var(--input-border-hover);
+  background: var(--input-bg-hover);
+}
+.message-input:focus{
+  border-color: var(--input-border-focus);
+  box-shadow: var(--input-focus-ring);
+}
+.message-input::placeholder{
+  color: var(--input-placeholder);
+}
+.message-send-btn{
+  flex:1;
+}
+.send-btn-icon{
+  width: 1.5rem;
+  height: 1.5rem;
+}
