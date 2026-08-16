@@ -568,3 +568,52 @@ a {
   color: var(--text-secondary);
   font-weight: var(--font-weight-semibold)
 }
+.message-row{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: var(--space-3);
+}
+.message-row-own{
+  justify-content: flex-end;
+}
+.message-bubble{
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  width: min(70%, 38rem);
+  padding: var(--space-2) var(--space-3);
+  background: var(--message-other-bg);
+  color: var(--message-other-text);
+  border-radius: 1rem 1rem 1rem 0.25rem;
+  box-shadow: var(--shadow-sm)
+}
+.message-bubble-own{
+  align-items: flex-end;
+  background: var(--message-own-bg);
+  color: var(--message-own-text);
+  border-radius: 1rem 1rem 0.25rem 1rem;
+}
+.message-sender-name{
+  color: var(--message-other-meta);
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+.message-text{
+  margin: 0;
+  font-size: var(--font-size-md);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.message-time{
+  display: block;
+  font-size: 0.6875rem;
+  color: var(--message-other-meta);
+  margin-top: var(--space-1);
+  text-align: right;
+  line-height: 1;
+}
+.message-time-own{
+  color: var(--message-own-meta);
+}
