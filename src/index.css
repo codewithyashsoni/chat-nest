@@ -462,6 +462,7 @@ a {
   background: var(--chat-header-bg);
   border-bottom: 1px solid var(--chat-divider);
   box-shadow: var(--shadow-md);
+  z-index: var(--z-header);
 }
 .chat-navbar{
   width: min(90%, 1280px);
@@ -520,4 +521,50 @@ a {
 .chat-navbar-actions .button {
   padding: var(--space-2) var(--space-5);
   font-size: var(--font-size-lg);
+}
+.chat-page{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-container{
+  width: min(90%, 1280px);
+  margin-inline: auto;
+  flex: 1;
+  min-height: 0;
+}
+.message-list-container{
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  padding: var(--space-4) var(--space-6);
+  overflow-y: auto;
+}
+.message-empty-state{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.message-empty-icon{
+  width: 5rem;
+  height: 5rem;
+  color: var(--primary);
+  margin-bottom: var(--space-3);
+}
+.message-empty-state h2{
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--text);
+}
+.message-empty-state p{
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-semibold)
 }

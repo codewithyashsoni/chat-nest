@@ -1,13 +1,16 @@
 import ChatNavbar from "../components/chat/ChatNavbar.jsx"
+import MessageList from "../components/chat/MessageList.jsx"
 
 function ChatHome(){
     return(
-        <main className="chat-page">
+        <div className="chat-page">
+            <ChatNavbar />
             <div className="chat-container">
-                <ChatNavbar />
+                
+                <MessageList />
 
             </div>
-        </main>
+        </div>
     )
 }
 export default ChatHome
