@@ -1,4 +1,4 @@
-function MessageBubble({text, senderName, timeStamp, isOwn}){
+function MessageBubble({text, senderName, timestamp, isOwn}){
     return(
         <div className={`message-row ${isOwn ? "message-row-own" : ""}`}>
             <div className={`message-bubble ${isOwn ? "message-bubble-own" : ""}`}>
@@ -11,7 +11,7 @@ function MessageBubble({text, senderName, timeStamp, isOwn}){
                 </p>
 
                 <span className={`message-time ${isOwn ? "message-time-own" : ""}`}>
-                    {timeStamp}
+                    {timestamp}
                 </span>
             </div>
         </div>
