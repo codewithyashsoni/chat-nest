@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
+import { useAuth } from "../../context/AuthContext.jsx"
 
 import MessageEmptyState from "./MessageEmptyState.jsx"
 import MessageBubble from "./MessageBubble.jsx"
@@ -7,6 +8,8 @@ import DateDivider from "./DateDivider.jsx"
 import {subscribeToMessages} from "../../firebase/chat.js"
 
 function MessageList(){
+    const {user} = useAuth();
+
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -34,7 +37,7 @@ function MessageList(){
                         text={message.text}
                         senderName={message.senderName}
                         timestamp={message.timestamp}
-                        isOwn={message.isOwn}
+                        isOwn={message.senderId === user.uid}
                     />
                 ))
             ))}
