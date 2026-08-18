@@ -1,3 +1,5 @@
+import { formatMessageTime } from "../../utils/dateUtils.js"
+
 function MessageBubble({text, senderName, timestamp, isOwn}){
     return(
         <div className={`message-row ${isOwn ? "message-row-own" : ""}`}>
@@ -11,7 +13,7 @@ function MessageBubble({text, senderName, timestamp, isOwn}){
                 </p>
 
                 <span className={`message-time ${isOwn ? "message-time-own" : ""}`}>
-                    {timestamp}
+                    {formatMessageTime(timestamp)}
                 </span>
             </div>
         </div>
