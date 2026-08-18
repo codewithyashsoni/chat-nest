@@ -7,26 +7,29 @@ import { sendMessage } from "../../firebase/chat.js"
 function MessageInput(){
     const {user} = useAuth();
 
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
 
     async function handleSubmit(e){
         e.preventDefault();
-        console.log("enterd")
 
         const trimmedMessage = message.trim();
 
-        if(!trimmedMessage){
+        if(!trimmedMessage || loading){
             return;
         }
-
-        console.log("after trimmed");
         
         try{
+            setLoading(true);
+
             await sendMessage(trimmedMessage, user);
+            
             console.log("message sent")
             setMessage("")
         }catch(error){
             console.error("Failed to send message:", error);
+        }finally{
+            setLoading(false)
         }
     }
 
@@ -48,6 +51,7 @@ function MessageInput(){
                     variant="primary"                
                     type="submit"
                     className="message-send-btn"
+                    disabled={loading}
                 >
                     <Send className="send-btn-icon" strokeWidth={2.5} />
                 </Button>
