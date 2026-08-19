@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useAuth } from "../../context/AuthContext.jsx"
 
 import MessageEmptyState from "./MessageEmptyState.jsx"
@@ -14,6 +14,9 @@ function MessageList(){
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const bottomRef = useRef(null);
+    const isNearBottomRef = useRef(true);
+
     useEffect(() => {
         const unsubscribe = subscribeToMessages((messages) => {
             setMessages(messages);
@@ -21,11 +24,30 @@ function MessageList(){
         });
 
         return unsubscribe;
-    }, [])
+    }, []);
+
+    function handleScroll(e){
+        const element = e.currentTarget;
+
+        const distanceFromBottom = 
+            element.scrollHeight -
+            element.scrollTop -
+            element.clientHeight;
+
+        isNearBottomRef.current = distanceFromBottom < 100;
+    }
+
+    useEffect(()=>{
+        if(bottomRef.current && isNearBottomRef.current){
+            bottomRef.current.scrollIntoView({
+                behavior: "smooth"
+            })
+        }
+    }, [messages])
 
 
     return(
-        <div className="message-list-container">
+        <div className="message-list-container" onScroll={handleScroll}>
             {loading ? (
                 <p>Loading messages</p>
             ) : (
@@ -59,6 +81,7 @@ function MessageList(){
                     )
                 })
             ))}
+            <div ref={bottomRef}></div>
         </div>
     )
 }
