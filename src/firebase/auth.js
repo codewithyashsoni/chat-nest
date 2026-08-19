@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, 
-    updateProfile, signInWithEmailAndPassword } from "firebase/auth"
+    updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth"
 
 import app from "./firebase.js"
 
@@ -29,4 +29,8 @@ async function loginUser(email, password){
     return userCredentials.user;
 }
 
-export { auth, signUpUser, loginUser }
+async function logoutUser(){
+    await signOut(auth);
+}
+
+export { auth, signUpUser, loginUser, logoutUser }
