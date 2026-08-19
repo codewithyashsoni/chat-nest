@@ -1,5 +1,5 @@
 import { getDatabase } from "firebase/database"
-import { app } from "./firebase.js"
+import  app  from "./firebase.js"
 
 const database = getDatabase(app);
 

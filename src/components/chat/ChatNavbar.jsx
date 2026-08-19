@@ -1,19 +1,30 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { MessagesSquare, LogOut } from "lucide-react"
 import Button from "../common/Button.jsx"
 import ConfirmModal from "../common/ConfirmModal.jsx"
 
 import { useAuth } from "../../context/AuthContext.jsx"
 import { logoutUser } from "../../firebase/auth.js"
+import { subscribeToOnlineCount, setUserOffline } from "../../firebase/presence.js"
 
 function ChatNavbar(){
     const {user} = useAuth();
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [onlineCount, setOnlineCount] = useState(0);
+
+    useEffect(() => {
+        const unsubscribe = subscribeToOnlineCount((count) => {
+            setOnlineCount(count);
+        });
+
+        return unsubscribe;
+    }, [])
 
     async function handleLogout(){
         try{
             setLoading(true);
+            await setUserOffline(user.uid);
             await logoutUser();
         }catch(error){
             console.error("failed to logout:", error);
@@ -36,7 +47,7 @@ function ChatNavbar(){
                     <div className="chat-navbar-actions">
                         <div className="chat-online-status">
                             <span className="online-dot"></span>
-                            <span>4 online</span>
+                            <span>{onlineCount} online</span>
                         </div>
 
                         <Button 
