@@ -29,7 +29,7 @@ function MessageInput(){
 
             typingTimeoutRef.current = setTimeout(() => {
                 setUserTyping(user.uid, false);
-            }, 1000);
+            }, 1500);
         }else{
             clearTimeout(typingTimeoutRef.current);
             setUserTyping(user.uid, false);

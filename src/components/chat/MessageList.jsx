@@ -7,12 +7,14 @@ import DateDivider from "./DateDivider.jsx"
 
 import {subscribeToMessages} from "../../firebase/chat.js"
 import { getMessageDateLabel } from "../../utils/dateUtils.js"
+import { subscribeToTyping } from "../../firebase/typing.js"
 
 function MessageList(){
     const {user} = useAuth();
 
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [typingUsers, setTypingUsers] = useState([]);
 
     const bottomRef = useRef(null);
     const isNearBottomRef = useRef(true);
@@ -25,6 +27,22 @@ function MessageList(){
 
         return unsubscribe;
     }, []);
+
+    useEffect(() => {
+        const unsubscribe = subscribeToTyping((userIds) => {
+            setTypingUsers(userIds)
+        });
+
+        return unsubscribe;
+    }, []);
+
+    const otherTypingUsers = typingUsers.filter(
+        (userId) => userId !== user.uid
+    );
+
+    const typingUser = messages.find(
+        (message) => message.senderId === otherTypingUsers[0]
+    );
 
     function handleScroll(e){
         const element = e.currentTarget;
@@ -43,7 +61,7 @@ function MessageList(){
                 behavior: "smooth"
             })
         }
-    }, [messages])
+    }, [messages, typingUsers])
 
 
     return(
@@ -81,6 +99,13 @@ function MessageList(){
                     )
                 })
             ))}
+
+            {typingUser && (
+                <div className="typing-indicator">
+                    {typingUser.senderName} is typing...
+                </div>
+            )}
+
             <div ref={bottomRef}></div>
         </div>
     )
