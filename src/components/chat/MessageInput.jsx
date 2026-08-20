@@ -1,14 +1,40 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Button from "../common/Button.jsx"
 import { Send } from "lucide-react"
 import { useAuth } from "../../context/AuthContext.jsx"
 import { sendMessage } from "../../firebase/chat.js"
+import { setUserTyping } from "../../firebase/typing.js"
 
 function MessageInput(){
     const {user} = useAuth();
 
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
+
+    const typingTimeoutRef = useRef(null);
+
+    function handleMessageChange(e){
+        const value = e.target.value;
+
+        setMessage(value);
+
+        if(!user){
+            return;
+        }
+
+        if(value.trim()){
+            setUserTyping(user.uid, true);
+
+            clearTimeout(typingTimeoutRef.current);
+
+            typingTimeoutRef.current = setTimeout(() => {
+                setUserTyping(user.uid, false);
+            }, 1000);
+        }else{
+            clearTimeout(typingTimeoutRef.current);
+            setUserTyping(user.uid, false);
+        }
+    }
 
     async function handleSubmit(e){
         e.preventDefault();
@@ -42,7 +68,7 @@ function MessageInput(){
                 <input
                     type="text"
                     value={message}
-                    onChange={(e) => setMessage(e.target.value)}
+                    onChange={handleMessageChange}
                     placeholder="Type a message..."
                     className="message-input"
                 />
