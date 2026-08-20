@@ -32,12 +32,9 @@ function setUserOnline(userId){
 }
 
 function subscribeToOnlineCount(callback){
-    console.log("Entered subscribeToOnlineCount");
     const presenceRef = ref(database, "presence");
 
     const unsubscribe = onValue(presenceRef, (snapshot) => {
-        console.log("Presence snapshot exists:", snapshot.exists());
-        console.log("Presence data:", snapshot.val());
 
         const presenceData = snapshot.val();
 
@@ -49,9 +46,6 @@ function subscribeToOnlineCount(callback){
         const onlineCount = Object.values(presenceData)
             .filter((user) => user.online === true)
             .length;
-
-
-        console.log("Online count:", onlineCount);
 
         callback(onlineCount);
     },

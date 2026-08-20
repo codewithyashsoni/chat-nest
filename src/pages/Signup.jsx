@@ -57,10 +57,7 @@ function Signup(){
                 trimmedEmail,
                 password
             );
-            console.log("User created:", user);
-
             navigate("/")
-
         }catch(error){
             console.error(error);
             setError(getAuthErrorMessage(error))

@@ -16,7 +16,7 @@ function Login(){
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
-    async function handleSubmit(e){{
+    async function handleSubmit(e){
         e.preventDefault();
         setError("");
 
@@ -38,12 +38,7 @@ function Login(){
                 trimmedEmail,
                 password
             );
-
-            console.log("User logged in: ", user);
-
             navigate("/");
-
-
         }catch(error){
             console.error(error);
             setError(getAuthErrorMessage(error));
@@ -51,7 +46,7 @@ function Login(){
         }finally{
             setLoading(false);
         }
-    }}
+    }
 
     return(
         <AuthLayout>
@@ -68,7 +63,7 @@ function Login(){
                     <AuthInput
                         label="Email"
                         name="email"
-                        type="Email"
+                        type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
@@ -88,7 +83,7 @@ function Login(){
                     />
 
                     {error && (
-                        <p className="auth-error-msg">{error}</p>
+                        <p className="auth-form-error">{error}</p>
                     )}
 
                     <AuthButton loading={loading}>

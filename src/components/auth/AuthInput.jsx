@@ -14,6 +14,8 @@ function AuthInput({label, type = "text",name,  value,
                 placeholder={placeholder}
                 autoComplete={autoComplete}
                 className="auth-input"
+                required={required}
+                minLength={minLength}
             />
         </div>
     )
