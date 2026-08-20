@@ -40,9 +40,14 @@ function MessageList(){
         (userId) => userId !== user.uid
     );
 
-    const typingUser = messages.find(
-        (message) => message.senderId === otherTypingUsers[0]
-    );
+    const typingUserNames = otherTypingUsers
+        .map((userId) => {
+            const message = messages.find(
+                (message) => message.senderId === userId
+            );
+            return message?.senderName;
+        })
+        .filter(Boolean);
 
     function handleScroll(e){
         const element = e.currentTarget;
@@ -100,9 +105,14 @@ function MessageList(){
                 })
             ))}
 
-            {typingUser && (
+            {typingUserNames.length > 0 && (
                 <div className="typing-indicator">
-                    {typingUser.senderName} is typing...
+                    {typingUserNames.length === 1
+                        ? `${typingUserNames[0]} is typing...`
+                        : typingUserNames.length === 2
+                            ? `${typingUserNames[0]} and ${typingUserNames[1]} are typing...`
+                            : `${typingUserNames[0]}, ${typingUserNames[1]} and ${typingUserNames.length - 2} others are typing...`
+                    }
                 </div>
             )}
 
