@@ -2,11 +2,12 @@ import { ref, set, onValue } from "firebase/database"
 
 import { database } from "./database.js"
 
-function setUserTyping(userId, isTyping){
+function setUserTyping(userId, userName, isTyping){
     const typingRef = ref(database, `typing/${userId}`);
 
     return set(typingRef, {
-        typing: isTyping
+        typing: isTyping,
+        name: userName || "Someone"
     });
 }
 
@@ -22,8 +23,11 @@ function subscribeToTyping(callback){
         }
 
         const typingUsers = Object.entries(typingData)
-            .filter(([userId, data]) => data.typing === true)
-            .map(([userId]) => userId);
+            .filter(([_, user]) => user.typing === true)
+            .map(([userId, user]) => ({
+                userId,
+                name: user.name || "Someone"
+            }));
 
         callback(typingUsers);
     });

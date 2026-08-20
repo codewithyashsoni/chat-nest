@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useEffect, useRef } from "react"
 import Button from "../common/Button.jsx"
 import { Send } from "lucide-react"
 import { useAuth } from "../../context/AuthContext.jsx"
@@ -21,19 +21,19 @@ function MessageInput(){
         if(!user){
             return;
         }
+        clearTimeout(typingTimeoutRef.current);
 
-        if(value.trim()){
-            setUserTyping(user.uid, true);
+        if(!value.trim()){
+            setUserTyping(user.uid, user.displayName, false);
 
-            clearTimeout(typingTimeoutRef.current);
-
-            typingTimeoutRef.current = setTimeout(() => {
-                setUserTyping(user.uid, false);
-            }, 1500);
-        }else{
-            clearTimeout(typingTimeoutRef.current);
-            setUserTyping(user.uid, false);
+            return;
         }
+
+        setUserTyping(user.uid, user.displayName, true);
+
+        typingTimeoutRef.current = setTimeout(() => {
+            setUserTyping(user.uid, user.displayName, false);
+        }, 1500);
     }
 
     async function handleSubmit(e){
@@ -49,8 +49,11 @@ function MessageInput(){
             setLoading(true);
 
             await sendMessage(trimmedMessage, user);
-            
-            console.log("message sent")
+
+            clearTimeout(typingTimeoutRef.current);
+
+            await setUserTyping(user.uid, user.displayName, false);
+
             setMessage("")
         }catch(error){
             console.error("Failed to send message:", error);
@@ -58,6 +61,20 @@ function MessageInput(){
             setLoading(false)
         }
     }
+
+    useEffect(() => {
+        return () => {
+            clearTimeout(typingTimeoutRef.current);
+
+            if(user){
+                setUserTyping(
+                    user.uid,
+                    user.displayName,
+                    false
+                );
+            }
+        };
+    }, [user]);
 
     return(
         <div className="message-input-container">
