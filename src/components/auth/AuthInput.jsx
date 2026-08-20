@@ -2,7 +2,6 @@ function AuthInput({label, type = "text",name,  value,
     onChange, placeholder, autoComplete, required = false, minLength}){
     return(
         <div className="auth-input-group">
-
             <label htmlFor={name}>{label}:</label>
 
             <input

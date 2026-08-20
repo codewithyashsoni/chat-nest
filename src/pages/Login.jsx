@@ -42,7 +42,6 @@ function Login(){
         }catch(error){
             console.error(error);
             setError(getAuthErrorMessage(error));
-
         }finally{
             setLoading(false);
         }

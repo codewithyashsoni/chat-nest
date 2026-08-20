@@ -7,7 +7,6 @@ import ProtectedRoute from "./routes/ProtectedRoute.jsx"
 
 function App() {
   return (
-    <>
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
@@ -18,8 +17,6 @@ function App() {
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
-        
-    </>
   )
 }
 
