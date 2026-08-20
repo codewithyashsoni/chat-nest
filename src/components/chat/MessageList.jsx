@@ -4,6 +4,7 @@ import { useAuth } from "../../context/AuthContext.jsx"
 import MessageEmptyState from "./MessageEmptyState.jsx"
 import MessageBubble from "./MessageBubble.jsx"
 import DateDivider from "./DateDivider.jsx"
+import Loader from "../common/Loader.jsx"
 
 import {subscribeToMessages} from "../../firebase/chat.js"
 import { getMessageDateLabel } from "../../utils/dateUtils.js"
@@ -78,7 +79,7 @@ function MessageList(){
     return(
         <div className="message-list-container" onScroll={handleScroll}>
             {loading ? (
-                <p>Loading messages</p>
+                <Loader />
             ) : (
             messages.length <= 0 ? (
                 <MessageEmptyState />
