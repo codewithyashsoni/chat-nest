@@ -8,7 +8,7 @@ ChatNest allows authenticated users to create an account, log in securely, and p
 
 ## 🚀 Live Demo
 
-🔗 **Live Demo:** [link_here]
+🔗 **Live Demo:** [https://chatnest-yash.netlify.app/]
 
 ---
 
